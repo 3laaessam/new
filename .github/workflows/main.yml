@@ -15,5 +15,12 @@ jobs:
 
 
     steps:
-      - name: 'testing github action' 
-        run: pwd     
+      - uses: action/checkout@v3 
+      - name: 'login' 
+        run: docker login --username ${{secret.username}} --password ${{secret.password}}   
+
+      - name: 'build image' 
+        run: docker build -t ${{secret.username}}/my-image
+
+      - name: 'push image' 
+        run: docker push ${{secret.username}}/my-image
