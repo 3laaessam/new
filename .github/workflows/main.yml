@@ -17,10 +17,10 @@ jobs:
     steps:
       - uses: action/checkout@v3 
       - name: 'login' 
-        run: docker login --username ${{secret.username}} --password ${{secret.password}}   
+        run: docker login --username ${{ secrets.username }} --password ${{ secrets.password }}   
 
       - name: 'build image' 
-        run: docker build -t ${{secret.username}}/my-image
+        run: docker build -t ${{secrets.username}}/my-image
 
       - name: 'push image' 
-        run: docker push ${{secret.username}}/my-image
+        run: docker push ${{secrets.username}}/my-image
